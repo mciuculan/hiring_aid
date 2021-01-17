@@ -1,6 +1,10 @@
 import java.util.*;
 
 public class Marketing extends Department{
+    public Marketing(List<Employee> e, List<Job> j) {
+        super(e, j);
+    }
+
     @Override
     public double getTotalSalaryBudget() {
         ArrayList<Employee> employees = getEmployees();

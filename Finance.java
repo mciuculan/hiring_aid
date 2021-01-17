@@ -1,9 +1,14 @@
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
 
 public class Finance extends Department{
+    public Finance(List<Employee> e, List<Job> j) {
+        super(e, j);
+    }
+
     @Override
     public double getTotalSalaryBudget() {
         ArrayList<Employee> employees = getEmployees();

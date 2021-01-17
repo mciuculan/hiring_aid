@@ -2,7 +2,8 @@ public class Employee extends Consumer{
     private Company company;
     private double salary;
 
-    public Employee(Company company, double salary) {
+    public Employee(Company company, double salary, Resume r, int id) {
+        super(r, id);
         this.company = company;
         this.salary = salary;
     }

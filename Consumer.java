@@ -2,6 +2,11 @@ import java.time.*;
 import java.util.*;
 
 public abstract class Consumer {
+
+    public void setUnique_id(int unique_id) {
+        this.unique_id = unique_id;
+    }
+
     class Resume {
         private Information information;
         private TreeSet<Education> education = new TreeSet<>();
@@ -41,7 +46,15 @@ public abstract class Consumer {
     }
     private Resume r;
     private List <Consumer> consumerList;
+    private int unique_id;
 
+    public Consumer(Resume r, int unique_id) {
+        this.unique_id = unique_id;
+        this.r = r; //il pun din clasa test
+    }
+    public int getUnique_id() {
+        return unique_id;
+    }
     public Resume getResume() {
         return r;
     }

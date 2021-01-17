@@ -2,7 +2,19 @@ import java.util.*;
 
 public class Application {
     private ArrayList<Company> companies;
-    private TreeSet<User> users;
+    private TreeMap<User, Integer> users;
+    private int no_users = 0;
+
+    private static Application single_instance = null;
+
+    private Application() { }
+
+    public static Application getInstance() {
+        if (single_instance == null)
+            single_instance = new Application();
+        return single_instance;
+    }
+
     public ArrayList<Company> getCompanies() {
         return companies;
     }
@@ -13,11 +25,14 @@ public class Application {
         }
         return null;
     }
+
+
     public void add(Company company) {
         companies.add(company);
     }
     public void add(User user) {
-        users.add(user);
+        users.put(user, no_users);
+        no_users += 1;
     }
     public boolean remove(Company company) {
         if (companies.contains(company) == true) {
@@ -27,9 +42,12 @@ public class Application {
         return false;
     }
     public boolean remove(User user) {
-        if (users.contains(user) == true) {
-            users.remove(user);
-            return true;
+        for (Map.Entry iterator : users.entrySet()) {
+            User u = (User) iterator.getKey();
+            if (u.getResume().getInformation().getSur_name().compareTo(user.getResume().getInformation().getSur_name()) == 0) {
+                users.remove(user);
+                return true;
+            }
         }
         return false;
     }

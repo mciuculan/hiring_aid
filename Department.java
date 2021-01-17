@@ -4,6 +4,10 @@ public abstract class Department {
     private List<Employee> employeeList;
     private List<Job> jobs;
 
+    public Department(List<Employee> e, List<Job> j) {
+        this.employeeList = e;
+        this.jobs = j;
+    }
     public List<Job> getAllJobList() {
         return jobs;
     }

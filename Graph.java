@@ -2,59 +2,54 @@ import java.util.*;
 
 public class Graph {
 
-    class Node {
-        Consumer name;
-        int value;
+    // We use Hashmap to store the edges in the graph
+    private Map<Consumer, List<Consumer> > consumers = new HashMap<>();
+
+    // This function adds a new vertex to the graph
+    public void addVertex(Consumer s)
+    {
+        consumers.put(s, new LinkedList<Consumer>());
     }
 
-    private int V;   // No. of vertices
-    private LinkedList<Node> adj[]; //Adjacency Lists
+    // This function adds the edge
+    // between source to destination
+    public void addEdge(Consumer source,
+                        Consumer destination)
+    {
 
-    // Constructor
-    Graph(int v) {
-        V = v;
-        adj = new LinkedList[v];
-        for (int i = 0; i < v; ++i)
-            adj[i] = new LinkedList<Node>();
+        if (!consumers.containsKey(source))
+            addVertex(source);
+
+        if (!consumers.containsKey(destination))
+            addVertex(destination);
+
+        consumers.get(source).add(destination);
+            consumers.get(destination).add(source);
     }
 
-    // Function to add an edge into the graph
-    void addEdge(Node v, Node w) {
-        adj[v.value].add(w);
-    }
-
-    // prints BFS traversal from a given source s
-    int BFS(Node s, Node d) {
-        // Mark all the vertices as not visited(By default
-        // set as false)
-        boolean visited[] = new boolean[V];
-
-        // Create a queue for BFS
-        LinkedList<Node> queue = new LinkedList<>();
-
-        // Mark the current node as visited and enqueue it
-        visited[s.value] = true;
-        queue.add(s);
-        int degree = 0;
-
-        while (queue.size() != 0) {
-            // Dequeue a vertex from queue and print it
-            s = queue.poll();
-            degree += 1;
-            // Get all adjacent vertices of the dequeued vertex s
-            // If a adjacent has not been visited, then mark it
-            // visited and enqueue it
-            Iterator<Node> i = adj[s.value].listIterator();
-            while (i.hasNext()) {
-                Node n = i.next();
-                if (n.name.getResume().getInformation().getName().compareTo(d.name.getResume().getInformation().getName()) == 0)
-                    return  degree;
-                if (!visited[n.value]) {
-                    visited[n.value] = true;
-                    queue.add(n);
-                }
-            }
+    // This function gives whether
+    // a vertex is present or not.
+    public boolean hasVertex(Consumer s)
+    {
+        if (consumers.containsKey(s)) {
+            return true;
         }
-        return degree;
+        else {
+            return false;
+        }
+    }
+
+    // This function gives whether an edge is present or not.
+    public boolean hasEdge(Consumer s, Consumer d)
+    {
+        if (consumers.get(s).contains(d)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void bfs(Consumer s, Consumer d) {
+
     }
 }

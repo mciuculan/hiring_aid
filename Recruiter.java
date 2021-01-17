@@ -1,7 +1,7 @@
 public class Recruiter extends Employee{
     private double rating = 5.0; // se adauga +0.1 pt userii evaluati
-    public Recruiter(Company company, double salary) {
-        super(company, salary);
+    public Recruiter(Company company, double salary, Resume r, int id) {
+        super(company, salary, r, id);
     }
 
     public double getRating() {

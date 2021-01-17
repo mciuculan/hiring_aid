@@ -1,0 +1,6 @@
+-> toata Application -- checked
+-> move dintr-un departament in altul (Company) -- checked
+-> tot ce tine de reteaua sociala ->getRecruiter + getDegreeInFriendship
+-> apply to job
+-> clasa Manager
+-> clasa Recruiter -- checked

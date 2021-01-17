@@ -4,8 +4,12 @@ import java.util.*;
 public class User extends Consumer {
     private List<String> companies;
 
+    public User(Resume r, int unique_id) {
+        super(r, unique_id);
+    }
+
     public Employee convert() {
-        Employee e = new Employee(this.getResume().getExperience().last().getCompany(), 0);
+        Employee e = new Employee(this.getResume().getExperience().last().getCompany(), 0, this.getResume(), this.getUnique_id());
         Resume r = new Resume();
         r.setEducation(this.getResume().getEducation());
         r.setInformation(this.getResume().getInformation());
