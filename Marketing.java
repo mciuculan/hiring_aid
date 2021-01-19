@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Marketing extends Department{
-    public Marketing(List<Employee> e, List<Job> j) {
-        super(e, j);
+    public Marketing(List<Employee> e, List<Job> j, String name) {
+        super(e, j, name);
     }
 
     @Override

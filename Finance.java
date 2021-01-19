@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.TreeSet;
 
 public class Finance extends Department{
-    public Finance(List<Employee> e, List<Job> j) {
-        super(e, j);
+    public Finance(List<Employee> e, List<Job> j, String name) {
+        super(e, j, name);
     }
 
     @Override

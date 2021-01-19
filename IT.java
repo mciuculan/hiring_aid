@@ -3,8 +3,8 @@ import java.util.List;
 
 public class IT extends Department{
 
-    public IT(List<Employee> e, List<Job> j) {
-        super(e, j);
+    public IT(List<Employee> e, List<Job> j, String name) {
+        super(e, j, name);
     }
 
     @Override

@@ -14,14 +14,20 @@ public class Manager extends Employee {
             }
         });
         for (Request r : requests) {
-            if (r.getKey() == job) {
+            if (r.getKey() == job && Application.getInstance().getUsers().containsKey((User) r.getValue1())) {
                 posibili_angajati.add((User) r.getValue1());
             }
         }
         int iterator = 0;
         for (User u : posibili_angajati) {
             if (iterator < job.getNoPositions()) {
-
+                Employee e = u.convert();
+                Application.getInstance().remove(u);
+                for (Department d : this.getCompany().getDepartment_list()) {
+                    if (d.getAllJobList().contains(job)) {
+                        d.add(e);
+                    }
+                }
             }
         }
     }

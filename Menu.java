@@ -3,12 +3,14 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
 public class Menu {
 
-    public static void main(String[] args) throws IOException {
+    public Menu() throws IOException {
         JFrame f=new JFrame();//creating instance of JFrame
         f.setIconImage(ImageIO.read(new File("./src/logo.png")));
         JPanel mainPanel = new JPanel();
@@ -50,11 +52,32 @@ public class Menu {
         userButton.setBackground(new Color(245, 245, 245));
         userButton.setFont(new Font("Work Sans", Font.PLAIN, 16));
         userButton.setForeground(new Color(8, 126, 139));
-        adminButton.setSize(300, 20);
         buttonPanel.add(adminButton);
         buttonPanel.add(managerButton);
         buttonPanel.add(userButton);
         mainPanel.add(buttonPanel);
+
+        adminButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.dispose();
+                AdminPage p = new AdminPage();
+            }
+        });
+        managerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.dispose();
+                ManagerPage m = new ManagerPage();
+            }
+        });
+        userButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.dispose();
+                ProfilePage p = new ProfilePage();
+            }
+        });
 
         f.add(mainPanel);
         f.setSize(400,550);//400 width and 500 height
@@ -62,6 +85,8 @@ public class Menu {
         f.setVisible(true);//making the frame visible
         f.setLayout(null);//using no layout managers
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    }
+    public static void main(String[] args) throws IOException {
+        Menu m = new Menu();
     }
 }

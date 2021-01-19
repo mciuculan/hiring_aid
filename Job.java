@@ -80,9 +80,11 @@ public class Job {
         return open;
     }
 
-//todo
     public void apply(User user) {
-
+        for (Company c : Application.getInstance().getCompanies())
+            if (c.getName().compareTo(this.getCompanyName()) == 0) {
+                c.getRecruiter(user).evaluate(this, user);
+            }
     }
 
     public boolean meetsRequirments(User user) {

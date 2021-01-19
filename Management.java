@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Management extends Department{
-    public Management(List<Employee> e, List<Job> j) {
-        super(e, j);
+    public Management(List<Employee> e, List<Job> j, String name) {
+        super(e, j, name);
     }
 
     @Override

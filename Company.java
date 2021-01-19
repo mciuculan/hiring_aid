@@ -50,6 +50,11 @@ public class Company implements Comparable<Company> {
 
     public void add(Recruiter recruiter) {
         this.recruiters.add(recruiter);
+        for (Department d : this.getDepartment_list()) {
+            if (d.getName().compareTo("IT") == 0) {
+                d.add(recruiter);
+            }
+        }
     }
 
     public void add(Employee employee, Department depatment) {
@@ -125,8 +130,9 @@ public class Company implements Comparable<Company> {
         return 1;
     }
 
-    // todo
-    // public Recruiter getRecruiter(User user) { }
+    public Recruiter getRecruiter(User user) {
+        return Application.getInstance().getUsersGraph().getSuitableRecruiter(user);
+    }
 
     public ArrayList<Job> getJobs() {
         ArrayList<Job> jobs = new ArrayList<>();

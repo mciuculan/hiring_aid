@@ -1,13 +1,9 @@
 import java.time.*;
 import java.util.*;
 
-public abstract class Consumer {
+public abstract class Consumer implements Comparable<Consumer> {
 
-    public void setUnique_id(int unique_id) {
-        this.unique_id = unique_id;
-    }
-
-    class Resume {
+    static class Resume {
         private Information information;
         private TreeSet<Education> education = new TreeSet<>();
         private TreeSet<Experience> experience = new TreeSet<>();
@@ -54,6 +50,9 @@ public abstract class Consumer {
     }
     public int getUnique_id() {
         return unique_id;
+    }
+    public void setUnique_id(int unique_id) {
+        this.unique_id = unique_id;
     }
     public Resume getResume() {
         return r;
@@ -103,9 +102,9 @@ public abstract class Consumer {
     public void add(Consumer consumer) {
         consumerList.add(consumer);
     }
-//todo
+
     public int getDegreeInFriendship(Consumer consumer) {
-        return 0;
+        return Application.getInstance().getUsersGraph().getDistance(this, consumer);
     }
 
     public void remove(Consumer consumer) {
