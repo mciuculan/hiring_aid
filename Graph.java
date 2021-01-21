@@ -10,17 +10,14 @@ public class Graph {
             single_instance = new Graph();
         return single_instance;
     }
-    // We use Hashmap to store the edges in the graph
+
     private Map<Consumer, List<Consumer> > consumers = new HashMap<>();
 
-    // This function adds a new vertex to the graph
     public void addConsumer(Consumer s)
     {
         consumers.put(s, new LinkedList<Consumer>());
     }
 
-    // This function adds the edge
-    // between source to destination
     public void addRelation(Consumer source, Consumer destination)
     {
         if (!consumers.containsKey(source))
@@ -33,18 +30,16 @@ public class Graph {
         consumers.get(destination).add(source);
     }
 
-    // This function gives whether
-    // a vertex is present or not.
     public boolean hasVertex(Consumer s)
     {
         return consumers.containsKey(s);
     }
 
-    // This function gives whether an edge is present or not.
     public boolean hasEdge(Consumer s, Consumer d)
     {
         return consumers.get(s).contains(d);
     }
+
     public Recruiter getSuitableRecruiter(Consumer s) {
         boolean[] visited = new boolean[consumers.size()];
         LinkedList<Consumer> queue = new LinkedList<>();
@@ -68,6 +63,7 @@ public class Graph {
         }
         return furthest;
     }
+
     public Integer getDistance(Consumer s, Consumer d) {
         boolean[] visited = new boolean[consumers.size()];
         LinkedList<Consumer> queue = new LinkedList<>();

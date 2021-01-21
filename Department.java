@@ -53,10 +53,6 @@ public abstract class Department {
     }
 
     public ArrayList<Employee> getEmployees() {
-        ArrayList<Employee> employees = new ArrayList<>();
-        for (Employee e : this.employeeList) {
-            employees.add(e);
-        }
-        return employees;
+        return new ArrayList<>(this.employeeList);
     }
 }

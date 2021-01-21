@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Application {
     private ArrayList<Company> companies;
-    private TreeMap<User, Integer> users;
+    private ArrayList<User> users;
     private int no_users = 0;
     private Graph usersGraph = Graph.getInstance();
 
@@ -20,13 +20,14 @@ public class Application {
         return no_users;
     }
 
-    public TreeMap<User, Integer> getUsers() {
+    public ArrayList<User> getUsers() {
         return users;
     }
 
     public ArrayList<Company> getCompanies() {
         return companies;
     }
+
     public Company getCompany(String name) {
         for (Company c : companies) {
             if (c.getName().compareTo(name) == 0)
@@ -42,11 +43,13 @@ public class Application {
     public void add(Company company) {
         companies.add(company);
     }
+
     public void add(User user) {
-        users.put(user, no_users);
+        users.add(user);
         user.setUnique_id(no_users);
         no_users += 1;
     }
+
     public boolean remove(Company company) {
         if (companies.contains(company)) {
             companies.remove(company);
@@ -54,10 +57,10 @@ public class Application {
         }
         return false;
     }
+
     public boolean remove(User user) {
-        for (Map.Entry<User, Integer> iterator : users.entrySet()) {
-            User u = (User) iterator.getKey();
-            if (u.getResume().getInformation().getSur_name().compareTo(user.getResume().getInformation().getSur_name()) == 0) {
+        for (User iterator : users) {
+            if (iterator.getResume().getInformation().getSur_name().compareTo(user.getResume().getInformation().getSur_name()) == 0) {
                 users.remove(user);
                 no_users--;
                 return true;
@@ -65,6 +68,7 @@ public class Application {
         }
         return false;
     }
+
     public ArrayList<Job> getJobs(List<String> companies) {
         ArrayList<Job> availableJobs = new ArrayList<>();
         for (String preference : companies) {

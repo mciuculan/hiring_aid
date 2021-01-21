@@ -4,8 +4,8 @@ public abstract class Consumer implements Comparable<Consumer> {
 
     static class Resume {
         private Information information;
-        private TreeSet<Education> education = new TreeSet<>();
-        private TreeSet<Experience> experience = new TreeSet<>();
+        private TreeSet<Education> education;
+        private TreeSet<Experience> experience;
 
         private Resume(ResumeBuilder builder) {
             this.information = builder.information;
@@ -67,9 +67,11 @@ public abstract class Consumer implements Comparable<Consumer> {
     public int getUnique_id() {
         return unique_id;
     }
+
     public void setUnique_id(int unique_id) {
         this.unique_id = unique_id;
     }
+
     public Resume getResume() {
         return r;
     }

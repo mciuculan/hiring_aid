@@ -5,6 +5,7 @@ public class Company implements Comparable<Company> {
     private Manager manager;
     private List<Department> department_list;
     private List<Recruiter> recruiters;
+
     public Company(String name, Manager manager, List<Department> department_list, List<Recruiter> recruiters) {
         this.name = name;
         this.manager = manager;

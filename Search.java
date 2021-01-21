@@ -1,5 +1,3 @@
-import com.sun.tools.javac.Main;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -9,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 
 public class Search {
     public Search() throws IOException {
@@ -71,10 +68,10 @@ public class Search {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    for (Map.Entry<User, Integer> u : Application.getInstance().getUsers().entrySet()) {
-                        if (u.getKey().getResume().getInformation().getSur_name().compareTo(search.getText()) == 0) {
+                    for (User u : Application.getInstance().getUsers()) {
+                        if (u.getResume().getInformation().getSur_name().compareTo(search.getText()) == 0) {
                             f.dispose();
-                            ProfilePage p = new ProfilePage(u.getKey());
+                            ProfilePage p = new ProfilePage(u);
                         }
                     }
                 }

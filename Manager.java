@@ -2,10 +2,11 @@ import java.util.*;
 
 public class Manager extends Employee {
     List<Request<Job, Consumer>> requests;
+
     public Manager(Company company, double salary, Resume r, int id) {
         super(company, salary, r, id);
     }
-    //todo
+
     public void process(Job job) {
         TreeSet<User> posibili_angajati = new TreeSet<>(new Comparator<User>() {
             @Override
@@ -14,7 +15,7 @@ public class Manager extends Employee {
             }
         });
         for (Request r : requests) {
-            if (r.getKey() == job && Application.getInstance().getUsers().containsKey((User) r.getValue1())) {
+            if (r.getKey() == job && Application.getInstance().getUsers().contains((User) r.getValue1())) {
                 posibili_angajati.add((User) r.getValue1());
             }
         }
