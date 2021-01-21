@@ -2,7 +2,7 @@ import java.time.*;
 import java.util.*;
 
 public class User extends Consumer {
-    private List<String> companies;
+    private ArrayList<String> companies = new ArrayList<>();
 
     public User(Resume r, int unique_id) {
         super(r, unique_id);

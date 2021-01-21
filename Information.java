@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Information {
@@ -8,7 +9,7 @@ public class Information {
     private int phone_number;
     private Date date_of_birth;
     private String sex;
-    private List<Languages> languages;
+    private ArrayList<Languages> languages;
 
     private Information(Builder builder) {
         this.sur_name = builder.sur_name;
@@ -26,7 +27,7 @@ public class Information {
         private int phone_number;
         private Date date_of_birth;
         private String sex;
-        private List<Languages> languages;
+        private ArrayList<Languages> languages;
 
         Builder setSex(String sex) {
             this.sex = sex;
@@ -58,7 +59,7 @@ public class Information {
             return this;
         }
 
-        Builder setLanguages(List<Languages> languages) {
+        Builder setLanguages(ArrayList<Languages> languages) {
             this.languages = languages;
             return this;
         }
@@ -91,7 +92,48 @@ public class Information {
         return sex;
     }
 
-    public List<Languages> getLanguages() {
+    public ArrayList<Languages> getLanguages() {
         return languages;
+    }
+
+    public void modifySur_name(String sur_name) {
+        this.sur_name = sur_name;
+    }
+
+    public void modifyName(String name) {
+        this.name = name;
+    }
+
+    public void modifyEmail(String email) {
+        this.email = email;
+    }
+
+    public void modifyPhone_number(int phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public void modifyDate_of_birth(Date date_of_birth) {
+        this.date_of_birth = date_of_birth;
+    }
+
+    public void modifySex(String sex) {
+        this.sex = sex;
+    }
+
+    public void modifyLanguages(ArrayList<Languages> languages) {
+        this.languages = languages;
+    }
+
+    @Override
+    public String toString() {
+        return "Information{" +
+                "sur_name='" + sur_name + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone_number=" + phone_number +
+                ", date_of_birth=" + date_of_birth +
+                ", sex='" + sex + '\'' +
+                ", languages=" + languages +
+                '}';
     }
 }

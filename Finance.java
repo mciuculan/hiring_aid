@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -5,7 +6,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 public class Finance extends Department{
-    public Finance(List<Employee> e, List<Job> j, String name) {
+    public Finance(ArrayList<Employee> e, ArrayList<Job> j, String name) {
         super(e, j, name);
     }
 

@@ -3,7 +3,7 @@ import java.util.List;
 
 public class IT extends Department{
 
-    public IT(List<Employee> e, List<Job> j, String name) {
+    public IT(ArrayList<Employee> e, ArrayList<Job> j, String name) {
         super(e, j, name);
     }
 

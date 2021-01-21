@@ -34,6 +34,7 @@ public class AdminPage {
         Border border = BorderFactory.createTitledBorder("Users");
         usersPanel.setBorder(border);
         JList<User> usersList = new JList<>();
+        //usersList.setListData((User[]) Application.getInstance().getUsers().toArray());
         usersPanel.add(new JScrollPane(usersList));
         container.add(usersPanel);
 
@@ -41,6 +42,7 @@ public class AdminPage {
         Border border1 = BorderFactory.createTitledBorder("Companies");
         companiesPanel.setBorder(border1);
         JList<Company> compList = new JList<>();
+       // compList.setListData((Company[]) Application.getInstance().getCompanies().toArray());
         companiesPanel.add(new JScrollPane(compList));
         container.add(companiesPanel);
 

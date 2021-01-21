@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Application {
-    private ArrayList<Company> companies;
-    private ArrayList<User> users;
+    private ArrayList<Company> companies = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
     private int no_users = 0;
     private Graph usersGraph = Graph.getInstance();
 

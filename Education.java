@@ -7,7 +7,7 @@ public class Education implements Comparable<Education> {
     private String level;
     private double grade;
 
-    class InvalidDatesException extends Exception {
+    static class InvalidDatesException extends Exception {
         public InvalidDatesException(String s) {
             super(s);
         }

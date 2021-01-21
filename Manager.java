@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Manager extends Employee {
-    List<Request<Job, Consumer>> requests;
+    ArrayList<Request<Job, Consumer>> requests;
 
     public Manager(Company company, double salary, Resume r, int id) {
         super(company, salary, r, id);

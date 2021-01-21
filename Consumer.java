@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public abstract class Consumer implements Comparable<Consumer> {
@@ -55,9 +56,13 @@ public abstract class Consumer implements Comparable<Consumer> {
         public TreeSet<Experience> getExperience() {
             return experience;
         }
+
+        public void modifyInformation(Information information) {
+            this.information = information;
+        }
     }
     private Resume r;
-    private List <Consumer> consumerList;
+    private ArrayList <Consumer> consumerList;
     private int unique_id;
 
     public Consumer(Resume r, int unique_id) {
@@ -80,11 +85,11 @@ public abstract class Consumer implements Comparable<Consumer> {
         this.r = r;
     }
 
-    public List<Consumer> getConsumerList() {
+    public ArrayList<Consumer> getConsumerList() {
         return consumerList;
     }
 
-    public void setConsumerList(List<Consumer> consumerList) {
+    public void setConsumerList(ArrayList<Consumer> consumerList) {
         this.consumerList = consumerList;
     }
 

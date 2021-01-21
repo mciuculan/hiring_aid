@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Management extends Department{
-    public Management(List<Employee> e, List<Job> j, String name) {
+    public Management(ArrayList<Employee> e, ArrayList<Job> j, String name) {
         super(e, j, name);
     }
 

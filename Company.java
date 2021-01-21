@@ -3,21 +3,21 @@ import java.util.*;
 public class Company implements Comparable<Company> {
     private String name;
     private Manager manager;
-    private List<Department> department_list;
-    private List<Recruiter> recruiters;
+    private ArrayList<Department> department_list;
+    private ArrayList<Recruiter> recruiters;
 
-    public Company(String name, Manager manager, List<Department> department_list, List<Recruiter> recruiters) {
+    public Company(String name, Manager manager, ArrayList<Department> department_list, ArrayList<Recruiter> recruiters) {
         this.name = name;
         this.manager = manager;
         this.department_list = department_list;
         this.recruiters = recruiters;
     }
 
-    public List<Department> getDepartment_list() {
+    public ArrayList<Department> getDepartment_list() {
         return department_list;
     }
 
-    public List<Recruiter> getRecruiters() {
+    public ArrayList<Recruiter> getRecruiters() {
         return recruiters;
     }
 
@@ -29,7 +29,7 @@ public class Company implements Comparable<Company> {
         return name;
     }
 
-    public void setDepartment_list(List<Department> department_list) {
+    public void setDepartment_list(ArrayList<Department> department_list) {
         this.department_list = department_list;
     }
 
@@ -41,7 +41,7 @@ public class Company implements Comparable<Company> {
         this.name = name;
     }
 
-    public void setRecruiters(List<Recruiter> recruiters) {
+    public void setRecruiters(ArrayList<Recruiter> recruiters) {
         this.recruiters = recruiters;
     }
 

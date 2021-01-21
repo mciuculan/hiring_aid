@@ -80,6 +80,11 @@ public class Search {
                             "User does not exist! Try adding new user.",
                             "Error",
                             JOptionPane.WARNING_MESSAGE);
+                    try {
+                        Menu m = new Menu();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
                 }
             }
         });

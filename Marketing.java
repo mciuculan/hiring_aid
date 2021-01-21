@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Marketing extends Department{
-    public Marketing(List<Employee> e, List<Job> j, String name) {
+    public Marketing(ArrayList<Employee> e, ArrayList<Job> j, String name) {
         super(e, j, name);
     }
 

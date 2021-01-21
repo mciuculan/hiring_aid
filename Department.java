@@ -1,24 +1,21 @@
 import java.util.*;
 
 public abstract class Department {
-    private List<Employee> employeeList;
-    private List<Job> jobs;
+    private ArrayList<Employee> employeeList;
+    private ArrayList<Job> jobs;
     private String name;
 
-    public Department(List<Employee> e, List<Job> j, String name) {
+    public Department(ArrayList<Employee> e, ArrayList<Job> j, String name) {
         this.employeeList = e;
         this.jobs = j;
         this.name = name;
     }
-    public List<Job> getAllJobList() {
-        return jobs;
-    }
 
-    public void setEmployeeList(List<Employee> employeeList) {
+    public void setEmployeeList(ArrayList<Employee> employeeList) {
         this.employeeList = employeeList;
     }
 
-    public void setJobs(List<Job> jobs) {
+    public void setJobs(ArrayList<Job> jobs) {
         this.jobs = jobs;
     }
 
@@ -54,5 +51,9 @@ public abstract class Department {
 
     public ArrayList<Employee> getEmployees() {
         return new ArrayList<>(this.employeeList);
+    }
+
+    public ArrayList<Job> getAllJobList() {
+        return jobs;
     }
 }
