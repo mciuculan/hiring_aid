@@ -16,6 +16,10 @@ public class Application {
         return single_instance;
     }
 
+    public int getNo_users() {
+        return no_users;
+    }
+
     public TreeMap<User, Integer> getUsers() {
         return users;
     }

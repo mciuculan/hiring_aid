@@ -10,30 +10,61 @@ public class Information {
     private String sex;
     private List<Languages> languages;
 
-    public void setSur_name(String sur_name) {
-        this.sur_name = sur_name;
+    private Information(Builder builder) {
+        this.sur_name = builder.sur_name;
+        this.name = builder.name;
+        this.email = builder.email;
+        this.phone_number = builder.phone_number;
+        this.date_of_birth = builder.date_of_birth;
+        this.sex = builder.sex;
+        this.languages = builder.languages;
     }
+    static class Builder {
+        private String sur_name;
+        private String name;
+        private String email;
+        private int phone_number;
+        private Date date_of_birth;
+        private String sex;
+        private List<Languages> languages;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        Builder setSex(String sex) {
+            this.sex = sex;
+            return this;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        Builder setSur_name(String sur_name) {
+            this.sur_name = sur_name;
+            return this;
+        }
 
-    public void setPhone_number(int phone_number) {
-        this.phone_number = phone_number;
-    }
+        Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
 
-    public void setDate_of_birth(int monthDay, int month, int year) {
-        this.date_of_birth.setMonth(month);
-        this.date_of_birth.setYear((year));
-        this.date_of_birth.setDate(monthDay);
-    }
+        Builder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
 
-    public void setLanguages(List<Languages> languages) {
-        this.languages = languages;
+        Builder setPhone_number(int phone_number) {
+            this.phone_number = phone_number;
+            return this;
+        }
+
+        Builder setDate_of_birth(Date date) {
+            this.date_of_birth = date;
+            return this;
+        }
+
+        Builder setLanguages(List<Languages> languages) {
+            this.languages = languages;
+            return this;
+        }
+        Information build() {
+            return new Information(this);
+        }
     }
 
     public String getSur_name() {

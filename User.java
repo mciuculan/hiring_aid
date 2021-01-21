@@ -10,10 +10,10 @@ public class User extends Consumer {
 
     public Employee convert() {
         Employee e = new Employee(this.getResume().getExperience().last().getCompany(), 0, this.getResume(), this.getUnique_id());
-        Resume r = new Resume();
-        r.setEducation(this.getResume().getEducation());
-        r.setInformation(this.getResume().getInformation());
-        r.setExperience(this.getResume().getExperience());
+        Resume r = new Resume.ResumeBuilder()
+        .setEducation(this.getResume().getEducation())
+        .setInformation(this.getResume().getInformation())
+        .setExperience(this.getResume().getExperience()).build();
         e.setResume(r);
         return e;
     }

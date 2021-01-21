@@ -8,10 +8,14 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 public class ProfilePage {
     public ProfilePage() {
-        JFrame f=new JFrame();//creating instance of JFrame
+        JFrame f=new JFrame();
         try {
             f.setIconImage(ImageIO.read(new File("./src/logo.png")));
         } catch (IOException e) {
@@ -29,6 +33,7 @@ public class ProfilePage {
         titlePanel.add(title);
         container.add(titlePanel);
 
+        // set surname
         JPanel surPanel = new JPanel(new GridLayout(1, 2));
         JLabel surName = new JLabel("Sur Name:");
         surName.setVerticalAlignment(JLabel.CENTER);
@@ -36,12 +41,13 @@ public class ProfilePage {
         surName.setFont(new Font("Work Sans", Font.BOLD, 15));
         surName.setForeground(new Color(8, 126, 139));
         surPanel.add(surName);
-
         JTextField surName_text_field = new JTextField();
         surPanel.add(surName_text_field);
         Border border8 = BorderFactory.createTitledBorder("");
         surPanel.setBorder(border8);
+        String surname_string = surName_text_field.getText();
 
+        //set name
         JPanel namePanel = new JPanel(new GridLayout(1, 2));
         JLabel Name = new JLabel("Name:");
         Name.setVerticalAlignment(JLabel.CENTER);
@@ -53,7 +59,9 @@ public class ProfilePage {
         namePanel.add(Name_text_field);
         Border border7 = BorderFactory.createTitledBorder("");
         namePanel.setBorder(border7);
+        String name_string = Name_text_field.getText();
 
+        //set email
         JPanel emailPanel = new JPanel(new GridLayout(1, 2));
         JLabel email = new JLabel("Email:");
         email.setVerticalAlignment(JLabel.CENTER);
@@ -65,7 +73,9 @@ public class ProfilePage {
         emailPanel.add(email_text_field);
         Border border6 = BorderFactory.createTitledBorder("");
         emailPanel.setBorder(border6);
+        String email_string = email_text_field.getText();
 
+        //set phone number
         JPanel phonePanel = new JPanel(new GridLayout(1, 2));
         JLabel phone = new JLabel("Phone Number:");
         phone.setVerticalAlignment(JLabel.CENTER);
@@ -73,12 +83,14 @@ public class ProfilePage {
         phone.setFont(new Font("Work Sans", Font.BOLD, 15));
         phone.setForeground(new Color(8, 126, 139));
         phonePanel.add(phone);
-        JTextField phone_text_field = new JTextField();
+        JTextField phone_text_field = new JTextField("000000");
         phonePanel.add(phone_text_field);
         Border border5 = BorderFactory.createTitledBorder("");
         phonePanel.setBorder(border5);
+        int phonenumber_string = Integer.parseInt(phone_text_field.getText());
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        //set date of birth
+        DateFormat df = new SimpleDateFormat("dd/MMM/yyyy");
         JPanel datePanel = new JPanel(new GridLayout(1, 2));
         JLabel date = new JLabel("Date of birth:");
         date.setVerticalAlignment(JLabel.CENTER);
@@ -87,14 +99,53 @@ public class ProfilePage {
         date.setForeground(new Color(8, 126, 139));
         datePanel.add(date);
         JFormattedTextField date_text_field = new JFormattedTextField(df);
-        date_text_field.setText("dd/MM/yyyy");
+        date_text_field.setText("01/Jan/1901");
         date_text_field.setForeground(new Color(60, 60, 60));
         date_text_field.setFont(new Font("Work Sans", Font.ITALIC, 15));
         date_text_field.setHorizontalAlignment(JTextField.CENTER);
         datePanel.add(date_text_field);
         Border border4 = BorderFactory.createTitledBorder("");
         datePanel.setBorder(border4);
+        StringTokenizer string = new StringTokenizer(date_text_field.getText(), "/");
+        Date dob = new Date();
+        int i = 0;
+        while (string.hasMoreTokens()) {
+            if (i == 0) {
+                dob.setDate(Integer.parseInt(string.nextToken()));
+            }
+            else if (i == 1) {
+                int month;
+                String s = string.nextToken();
+                switch (s) {
+                    case "Jan" -> month = 1;
+                    case "Feb" -> month = 2;
+                    case "Mar" -> month = 3;
+                    case "Apr" -> month = 4;
+                    case "May" -> month = 5;
+                    case "Jun" -> month = 6;
+                    case "Jul" -> month = 7;
+                    case "Aug" -> month = 8;
+                    case "Sep" -> month = 9;
+                    case "Oct" -> month = 10;
+                    case "Nov" -> month = 11;
+                    case "Dec" -> month = 12;
+                    default -> {
+                        JOptionPane.showMessageDialog(null,
+                                "Wrong month input!",
+                                "Error",
+                                JOptionPane.WARNING_MESSAGE);
+                        month = 1;
+                    }
+                }
+                dob.setMonth(month);
+            }
+            else if (i == 2) {
+                dob.setYear(Integer.parseInt(string.nextToken()));
+            }
+            i++;
+        }
 
+        //set sex
         JPanel sexPanel = new JPanel(new GridLayout(1, 2));
         JLabel sex = new JLabel("Sex:");
         sex.setVerticalAlignment(JLabel.CENTER);
@@ -113,7 +164,18 @@ public class ProfilePage {
         sexPanel.add(m_or_f);
         Border border3 = BorderFactory.createTitledBorder("");
         sexPanel.setBorder(border3);
+        String gender;
+        if (mButton.isSelected()) {
+            gender = "male";
+        }
+        else if (fButton.isSelected()) {
+            gender = "female";
+        }
+        else {
+            gender = "unknown";
+        }
 
+        //set languages
         JPanel languagePanel = new JPanel(new GridLayout(1, 2));
         JLabel languages = new JLabel("Languages:");
         languages.setVerticalAlignment(JLabel.CENTER);
@@ -121,10 +183,10 @@ public class ProfilePage {
         languages.setFont(new Font("Work Sans", Font.BOLD, 15));
         languages.setForeground(new Color(8, 126, 139));
         languagePanel.add(languages);
-        JPanel languagePanel2 = new JPanel(new GridLayout(2,1));
+        JPanel languagePanel2 = new JPanel(new GridLayout(3,1));
         JPanel addLanguage = new JPanel(new GridLayout(1,2));
-        JTextField language = new JTextField("Add language");
-        JTextField level = new JTextField("Add level");
+        JTextField language = new JTextField("Latin");
+        JTextField level = new JTextField("Beginner");
         language.setForeground(new Color(60, 60, 60));
         language.setFont(new Font("Work Sans", Font.ITALIC, 15));
         language.setHorizontalAlignment(JTextField.CENTER);
@@ -136,9 +198,14 @@ public class ProfilePage {
         languagePanel2.add(addLanguage);
         JList<Languages> languageList = new JList<>();
         languagePanel2.add(new JScrollPane(languageList));
+        JButton addNewLanguage = new JButton("Add Language");
+        addNewLanguage.setBackground(new Color(245, 245, 245));
+        addNewLanguage.setFont(new Font("Work Sans", Font.PLAIN, 16));
+        addNewLanguage.setForeground(new Color(8, 126, 139));
         languagePanel.add(languagePanel2);
         Border border2 = BorderFactory.createTitledBorder("");
         languagePanel.setBorder(border2);
+
 
         //start education
         JPanel ed = new JPanel(new GridLayout(2,1));
@@ -283,6 +350,7 @@ public class ProfilePage {
 
         //end experience
 
+        //buttons
         JPanel buttonPanel = new JPanel();
         GridLayout grid = new GridLayout(1,2);
         grid.setVgap(10);
@@ -299,6 +367,22 @@ public class ProfilePage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
+                try {
+                    Menu m = new Menu();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }
+        });
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                f.dispose();
+                JOptionPane.showMessageDialog(null,
+                        "User added",
+                        "",
+                        JOptionPane.WARNING_MESSAGE);
                 try {
                     Menu m = new Menu();
                 } catch (IOException ioException) {
@@ -326,5 +410,8 @@ public class ProfilePage {
         f.setResizable(false);
         f.setVisible(true);//making the frame visible
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    public ProfilePage(User u) {
+
     }
 }

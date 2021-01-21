@@ -2,6 +2,11 @@ public class Languages {
     private String language;
     private String level;
 
+    public Languages(String language, String level) {
+        this.language = language;
+        this.level = level;
+    }
+
     public String getLanguage() {
         return language;
     }

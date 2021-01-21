@@ -75,7 +75,11 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 f.dispose();
-                ProfilePage p = new ProfilePage();
+                try {
+                    Search p = new Search();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
 

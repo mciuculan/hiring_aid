@@ -1,4 +1,3 @@
-import java.time.*;
 import java.util.*;
 
 public abstract class Consumer implements Comparable<Consumer> {
@@ -8,24 +7,41 @@ public abstract class Consumer implements Comparable<Consumer> {
         private TreeSet<Education> education = new TreeSet<>();
         private TreeSet<Experience> experience = new TreeSet<>();
 
+        private Resume(ResumeBuilder builder) {
+            this.information = builder.information;
+            this.education = builder.education;
+            this.experience = builder.experience;
+        }
+        static class ResumeBuilder {
+            private Information information;
+            private TreeSet<Education> education = new TreeSet<>();
+            private TreeSet<Experience> experience = new TreeSet<>();
+
+            ResumeBuilder setEducation(TreeSet<Education> education) {
+                this.education = education;
+                return this;
+            }
+
+            ResumeBuilder setExperience(TreeSet<Experience> experience) {
+                this.experience = experience;
+                return this;
+            }
+
+            ResumeBuilder setInformation(Information information) {
+                this.information = information;
+                return this;
+            }
+
+            Resume build() {
+                return new Resume(this);
+            }
+        }
         public void addEducation(Education ed) {
             education.add(ed);
         }
 
         public void addExperience(Experience exp) {
             experience.add(exp);
-        }
-
-        public void setEducation(TreeSet<Education> education) {
-            this.education = education;
-        }
-
-        public void setExperience(TreeSet<Experience> experience) {
-            this.experience = experience;
-        }
-
-        public void setInformation(Information information) {
-            this.information = information;
         }
 
         public Information getInformation() {
@@ -68,27 +84,6 @@ public abstract class Consumer implements Comparable<Consumer> {
 
     public void setConsumerList(List<Consumer> consumerList) {
         this.consumerList = consumerList;
-    }
-
-    public void editName(String name, String sur_name) {
-        r.information.setName(name);
-        r.information.setSur_name(sur_name);
-    }
-
-    public void editEMAIL(String email) {
-        r.information.setEmail(email);
-    }
-
-    public void editPhoneNumber(int number) {
-        r.information.setPhone_number(number);
-    }
-
-    public void editDateOfBirth(int year, int month, int date) {
-        r.information.setDate_of_birth(date, month, year);
-    }
-
-    public void editLanguages(List<Languages> l) {
-        r.information.setLanguages(l);
     }
 
     public void add(Education education) {
